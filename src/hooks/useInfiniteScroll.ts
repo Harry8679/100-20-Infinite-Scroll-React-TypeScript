@@ -61,14 +61,14 @@ export const useInfiniteScroll = <T,>(options: UseInfiniteScrollOptions<T>) => {
     if (data.length === 0 && !isLoading && !error) {
       loadMore();
     }
-  }, []);
+  }, [data.length, error, isLoading, loadMore]);
 
   // Load more when intersecting
   useEffect(() => {
     if (isIntersecting && hasMore && !isLoading) {
       loadMore();
     }
-  }, [isIntersecting, hasMore, isLoading]);
+  }, [isIntersecting, hasMore, isLoading, loadMore]);
 
   return {
     data,
